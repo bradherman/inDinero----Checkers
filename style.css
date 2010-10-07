@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+#wrapper { width:960px; margin:0 auto; color:#fff; }
+#board { width:960px; height:960px; background:#000; float:left;z-index:5; }
+.checker { width:80px; height:80px; border:2px solid #fff; border-radius: 50px; -moz-border-radius: 50px; position:absolute; left:20px; top:20px;background:#000;z-index:10; }
+.square { width:120px;height:120px; position:relative; float:left;background:#000;}
+.red { background: #F00; }
+.selected { border: medium solid #FF0; }
+.score {float:left;color:black;margin:0 2em 0 0;}
