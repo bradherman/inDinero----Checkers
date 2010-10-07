@@ -1,1 +1,14 @@
-UPDATE: 11:30pm 10/6/2010Still need to add the following features:	- Kings	- Multi-jumps	- Game over/winner notification	Would like to add:	- Turn into jQuery plugin w/ options	- Extract CSS and JS to seperate files	- Better graphics	- Cleaner CSS	- CompressionI still need to refactor stuff a bit to make the functions prettier (ugly right now since I'm drinking with my roommate and watching Futurama :) 
+UPDATE: 11:30pm 10/6/2010
+
+Still need to add the following features:
+	- Kings
+	- Multi-jumps
+	- Game over/winner notification
+	
+Would like to add:
+	- Turn into jQuery plugin w/ options
+	- Better graphics
+	- Cleaner CSS
+	- Compression
+
+I still need to refactor stuff a bit to make the functions prettier (ugly right now since I'm drinking with my roommate and watching Futurama :) 
