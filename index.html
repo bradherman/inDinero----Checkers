@@ -40,6 +40,7 @@
 		
 		//*************************************************************************
 		// This function waits for a click on a square
+		// Add more documentation
 		//*************************************************************************
 		$('.square').live('click',function(){
 			square_coords = parseCoords($(this));
@@ -64,7 +65,7 @@
 	})
 
 	//*************************************************************************
-	// This button resets the game
+	// Checks to see if the move being attempted is valid
 	//*************************************************************************
 	valid_move = function(checker_coords, square_coords) {
 		x1 = Math.abs(checker_coords[0]);y1 = Math.abs(checker_coords[1]);x2 = Math.abs(square_coords[0]);y2 = Math.abs(square_coords[1]);
@@ -91,7 +92,7 @@
 	}
 	
 	//*************************************************************************
-	// This button resets the game
+	// Checks to see if user is trying a jump move
 	//*************************************************************************
 	isJumping = function(x_mid, y_mid, c) {
 		if (c > 2 && c < 3)
@@ -114,7 +115,7 @@
 	}
 
 	//*************************************************************************
-	// This button resets the game
+	// Checks the board to see if a checker is there
 	//*************************************************************************
 	
 	elementAt = function(coords) {
@@ -122,7 +123,7 @@
 	}
 
 	//*************************************************************************
-	// This button resets the game
+	// Parses an id into coordinates (eg: "3_4")
 	//*************************************************************************
 	
 	parseCoords = function(el) {
@@ -130,7 +131,8 @@
 	}
 
 	//*************************************************************************
-	// This button resets the game
+	// Registers a successful turn
+	// Switches to the next player
 	//*************************************************************************
 	
 	successfulTurn = function() {
@@ -141,7 +143,7 @@
 	}
 
 	//*************************************************************************
-	// This button resets the game
+	// Resets scores to 0
 	//*************************************************************************
 	resetScores = function() {
 		$('.score span').html('0');	
@@ -149,7 +151,8 @@
 	}
 	
 	//*************************************************************************
-	// This button resets the game
+	//  Initializes the board
+	//  Build the checker board
 	//*************************************************************************
 	initBoard = function(){
 		for (i = 0; i < 8; i ++){
@@ -164,7 +167,8 @@
 	}
 	
 	//*************************************************************************
-	// This button resets the game
+	// Resets the board
+	// Clears the board, replaces pieces
 	//*************************************************************************
 	resetBoard = function() {
 		board = new Array(8);
