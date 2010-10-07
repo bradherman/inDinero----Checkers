@@ -14,5 +14,6 @@ Would like to add:
 	- Better graphics
 	- Cleaner CSS
 	- Compression
+        - AI Opponent
 
 I still need to refactor stuff a bit to make the functions prettier (ugly right now since I'm drinking with my roommate and watching Futurama :) 
