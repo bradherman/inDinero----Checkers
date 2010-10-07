@@ -1,5 +1,9 @@
 UPDATE: 11:30pm 10/6/2010
 
+Bugs:
+	- Can jump yourself
+	- Issue with trying to jump opponent backwards (shouldn't do anything, but removes piece, yet you retain turn?)
+
 Still need to add the following features:
 	- Kings
 	- Multi-jumps
