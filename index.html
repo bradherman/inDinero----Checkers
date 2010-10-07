@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type='text/css'>
+	#wrapper { width:960px; margin:0 auto; color:#fff; }
+	#board { width:960px; height:960px; background:#000; float:left;z-index:5; }
+	.checker { width:80px; height:80px; border:2px solid #fff; border-radius: 50px; -moz-border-radius: 50px; position:absolute; left:20px; top:20px;background:#000;z-index:10; }
+	.square { width:120px;height:120px; position:relative; float:left;background:#000;}
+	.red { background: #F00; }
+	.selected { border: medium solid #FF0; }
+	.score {float:left;color:black;margin:0 2em 0 0;}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script> 
+<script type='text/javascript'>
+	$(document).ready(function(){
+		initBoard();
+		resetBoard();
+		resetScores();
+		
+		$('.checker').live('click',function(){
+			if ($(this).hasClass($turn)){
+				$('.selected').removeClass('selected');
+				$(this).addClass('selected');
+			}
+		});
+		
+		$('.square').live('click',function(){
+			square_coords = parseCoords($(this));
+//			parseCoords($(this));
+			if ($('.selected')[0]){
+				$el = $('.selected')[0];
+				checker_coords = parseCoords($('.selected').parent());
+				$class = $('.selected').attr('class').split(' ')[1];
+//$id = $('.selected').parent().attr('id');
+//coords = $id.split('_');
+				
+
+//				if (!board[$row][$column])
+				if (!elementAt(square_coords))
+					if (valid_move(checker_coords, square_coords)){
+						$el2 = $el;
+						board[checker_coords[0]][checker_coords[1]] = null;
+						board[square_coords[0]][square_coords[1]] = $class;
+						$("#"+square_coords[0]+"_"+square_coords[1]).append($el2);
+						successfulTurn();
+					}
+			}
+				
+				
+		})
+	})
+	
+	valid_move = function(checker_coords, square_coords) {
+		x1 = checker_coords[0];
+		y1 = checker_coords[1];
+		x2 = square_coords[0];
+		y2 = square_coords[1];
+		
+		c = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+		if ( c < 2 && c > 1)
+			return true;
+		else
+			return false;
+	}
+	
+	elementAt = function(coords) {
+		return board[coords[0]][coords[1]];
+	}
+	
+	parseCoords = function(el) {
+		return el.attr('id').split('_');
+	}
+	
+	successfulTurn = function() {
+		if ($turn == 'red')
+			$turn = 'black';
+		else
+			$turn = 'red';
+		$('#turn p').html($turn);
+		$('.selected').removeClass('selected');
+	}
+	
+	resetScores = function() {
+		$('.score span').html('0');	
+		$p1score = $p2score = 0;
+	}
+	
+	initBoard = function(){
+		for (i = 0; i < 8; i ++){
+			for (j = 0; j < 8; j++) {
+				$el = $('<div class="square"></div>');
+				if (i%2 == j%2)
+					$el.addClass('red');
+				$id = i.toString()+"_"+j.toString();
+				$el.attr('id',$id);
+				$('#board').append($el);	
+			}
+		}
+	}
+	
+	resetBoard = function() {
+		board = new Array(8);
+		$turn = 'red';
+		for (i = 0; i < 8; i++)
+			board[i] = new Array(8);
+						
+		for (i = 0; i < 8; i++){
+			for (j = 0; j < 3; j++){
+				
+				$id = j.toString()+"_"+i.toString();
+				$el = $('<div class="checker black"></div>');
+				$('#'+$id+'.square').append($el);
+				board[j][i] = 'black';
+				
+				$id = (7-j).toString()+"_"+i.toString();
+				$el2 = $('<div class="checker red"></div>');
+				$('#'+$id+'.square').append($el2);
+				board[7-j][i] = "red";
+			}
+		}	
+	}
+</script>
+<title>Checkers Y'all</title>
+</head>
+
+<body>
+    <div id="wrapper">
+    <span id='p1' class='score'>
+        <h2>Red Score</h2>
+        <span></span>
+    </span>
+    <span id='p2' class='score'>
+        <h2>Black Score</h2>
+        <span></span>
+    </span>
+    <span class='score' id='turn'>
+    	<h2>Player Turn</h2>
+        <p>Red's Turn</p>
+    </span>
+	<div id="board">
+        	
+    </div>    
+    </div>
+</body>
+</html>
