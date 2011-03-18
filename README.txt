@@ -1,3 +1,5 @@
+Play the game here: http://dl.dropbox.com/u/661094/checkers/index.html
+
 UPDATE: 11:30pm 10/6/2010
 
 Bugs:
